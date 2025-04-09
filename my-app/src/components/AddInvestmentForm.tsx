@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   amount: yup
     .number()
     .typeError("Amount must be a number")
-    .positive("Amount must be greater than 0")
+    .positive("Amount must be greater than 0 ")
     .required("Amount is required"),
   document: yup
     .mixed()
