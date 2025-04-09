@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "Real Estate Fund",
+    "amount": 10000,
+    "roi": "8%"
+  },
+  {
+    "id": "2",
+    "name": "Tech ETF",
+    "amount": 5000,
+    "roi": "12%"
+  }
+]
