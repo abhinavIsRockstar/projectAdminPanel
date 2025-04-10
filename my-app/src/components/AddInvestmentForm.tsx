@@ -13,6 +13,8 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { addInvestment } from "../features/investment/investmentSlice";
+import { useAppDispatch } from "../store/hooks";
 
 interface InvestmentFormValues {
   name: string;
@@ -25,7 +27,7 @@ const schema = yup.object().shape({
   amount: yup
     .number()
     .typeError("Amount must be a number")
-    .positive("Amount must be greater than 0 ")
+    .positive("Amount must be greater than 0")
     .required("Amount is required"),
   document: yup
     .mixed()
@@ -33,6 +35,7 @@ const schema = yup.object().shape({
 });
 
 const AddInvestmentForm = () => {
+  const dispatch = useAppDispatch()
   const {
     register,
     control,
@@ -42,8 +45,22 @@ const AddInvestmentForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: InvestmentFormValues) => {
+  const onSubmit = async (data: InvestmentFormValues) => {
     console.log("Form submitted:", data);
+    try {
+      await new Promise((resolve) =>setTimeout(resolve,1000))
+      const newInvestment = {
+        id : Date.now(),
+        ...data,
+        name : data.name,
+        amount : Number(data.amount),
+        // document : data.document,
+        roi : 8,
+      }
+      dispatch(addInvestment(newInvestment))
+    } catch (error) {
+      console.log(error)
+    }
     // You can mock an API call here
   };
 

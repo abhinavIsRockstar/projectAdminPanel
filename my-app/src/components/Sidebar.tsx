@@ -1,4 +1,5 @@
 import { Box, VStack, Text } from '@chakra-ui/react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Sidebar = () => {
   return (
@@ -7,6 +8,7 @@ const Sidebar = () => {
       <VStack letterSpacing={4} align="stretch">
         <Text _hover={{ cursor: 'pointer', bg: 'gray.700' }} p={2} rounded="md">Dashboard</Text>
         <Text _hover={{ cursor: 'pointer', bg: 'gray.700' }} p={2} rounded="md">Add Investment</Text>
+        <LanguageSwitcher />
       </VStack>
     </Box>
   );
